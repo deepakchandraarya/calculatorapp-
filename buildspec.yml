@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: 11
+    commands:
+      - echo "Installing Maven dependencies..."
+      - mvn clean install
+  build:
+    commands:
+      - echo "Building the application..."
+      - mvn package
+  post_build:
+    commands:
+      - echo "Build completed!"
+      - cp target/calculator-app-1.0.0.jar app.jar
+      - aws s3 cp app.jar s3://calculator-app-artifacts/
+artifacts:
+  files:
+    - app.jar

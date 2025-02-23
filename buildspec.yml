@@ -14,7 +14,7 @@ phases:
   post_build:
     commands:
       - echo "Build completed!"
-      - cp target/calculator-app-1.0.0.jar app.jar
+      - cp target/calculator-app-0.0.1-SNAPSHOT.jar app.jar
       - aws s3 cp app.jar s3://calculator-app-artifacts-deeparya/
 artifacts:
   files:
